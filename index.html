@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swachh Pani – Premium Natural Mineral Water</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              light: '#7dd3fc',
+              DEFAULT: '#0ea5e9',
+              dark: '#0369a1',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .frame-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      color: #fff;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-bar {
+      width: 240px;
+      height: 3px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 1.5rem;
+    }
+
+    .loader-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #0ea5e9, #7dd3fc);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .hero-overlay {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+    }
+
+    .hero-overlay::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(14,165,233,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .scroll-spacer {
+      height: 400vh;
+      position: relative;
+      z-index: 0;
+    }
+
+    .content-section {
+      position: relative;
+      z-index: 2;
+      background: #fff;
+      color: #111;
+      border-radius: 2rem 2rem 0 0;
+      margin-top: -2rem;
+      padding: 6rem 2rem;
+    }
+
+    .water-ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(14,165,233,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .glass-morphism {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .brand-line {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #0ea5e9, transparent);
+      margin: 1.5rem auto;
+    }
+
+    @media (max-width: 768px) {
+      .hero-overlay h1 { font-size: 2.5rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="text-brand-light text-sm tracking-[0.3em] uppercase font-medium">Loading</div>
+    <div class="loader-bar">
+      <div class="loader-bar-fill" id="loaderFill"></div>
+    </div>
+    <div class="text-white/40 text-xs mt-2" id="loaderText">0 / 241</div>
+  </div>
+
+  <!-- Frame background -->
+  <div class="frame-canvas" id="frameBg"></div>
+
+  
+
+  <!-- Scroll spacer for the animation -->
+  <div class="scroll-spacer" id="scrollSpacer"></div>
+
+  <!-- About / Content Section -->
+  <section class="content-section" id="about">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-brand-dark uppercase tracking-[0.2em] text-sm font-semibold mb-3">About Swachh Pani</p>
+        <h2 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-gray-900">
+          Pure Water,<br/>
+          <span class="text-brand">Circular Future</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 items-center mb-20">
+        <div>
+          <p class="text-gray-600 leading-relaxed text-lg">
+            Swachh Pani is India's first hospitality-focused returnable glass bottle ecosystem company, 
+            built to redefine premium water service through sustainability, luxury, and modern hospitality experiences.
+          </p>
+          <p class="text-gray-600 leading-relaxed text-lg mt-4">
+            We provide premium natural mineral water in reusable glass bottles along with customized branding 
+            solutions for hotels, cafés, restaurants, weddings, events, and luxury brands.
+          </p>
+        </div>
+        <div class="relative">
+          <div class="absolute -inset-4 bg-brand/5 rounded-3xl"></div>
+          <div class="relative bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 rounded-full bg-brand/10 flex items-center justify-center text-brand text-xl font-bold">♻</div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Circular Return Model</h3>
+                <p class="text-sm text-gray-500">Collect · Reuse · Reward</p>
+              </div>
+            </div>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Bottles are collected, reused, and rewarded through return discounts and credit coins 
+              that customers can use in their next purchase cycle.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+        <div class="text-center p-6 rounded-xl bg-gray-50 border border-gray-100">
+          <div class="text-3xl font-bold text-brand mb-1">241</div>
+          <div class="text-sm text-gray-500">Glass Bottles Saved</div>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-gray-50 border border-gray-100">
+          <div class="text-3xl font-bold text-brand mb-1">0Waste</div>
+          <div class="text-sm text-gray-500">Circular Economy</div>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-gray-50 border border-gray-100">
+          <div class="text-3xl font-bold text-brand mb-1">Premium</div>
+          <div class="text-sm text-gray-500">Hospitality Grade</div>
+        </div>
+        <div class="text-center p-6 rounded-xl bg-gray-50 border border-gray-100">
+          <div class="text-3xl font-bold text-brand mb-1">100%</div>
+          <div class="text-sm text-gray-500">Natural Mineral</div>
+        </div>
+      </div>
+
+      <!-- Vision -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-900 via-gray-800 to-black p-10 md:p-16 text-center">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-brand/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+        <div class="relative">
+          <h3 class="font-['Playfair_Display'] text-3xl md:text-4xl font-bold text-white mb-6">Our Vision</h3>
+          <p class="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
+            To build a globally recognized modern Indian brand that represents clean water, 
+            elegant design, responsible consumption, and sustainable hospitality.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const totalFrames = 241;
+    const framePath = 'hero/';
+
+    function pad(n) {
+      return String(n).padStart(3, '0');
+    }
+
+    const bg = document.getElementById('frameBg');
+    const loader = document.getElementById('loader');
+    const loaderFill = document.getElementById('loaderFill');
+    const loaderText = document.getElementById('loaderText');
+
+    const cache = new Array(totalFrames);
+    let loaded = 0;
+    let ready = false;
+    let current = -1;
+
+    function show(index) {
+      if (index === current || !ready) return;
+      current = index;
+      bg.style.backgroundImage = 'url(' + framePath + 'frame_' + pad(index + 1) + '.jpg)';
+    }
+
+    // Preload all images into browser cache
+    for (let i = 0; i < totalFrames; i++) {
+      const img = new Image();
+      img.onload = img.onerror = () => {
+        loaded++;
+        const pct = Math.round((loaded / totalFrames) * 100);
+        loaderFill.style.width = pct + '%';
+        loaderText.textContent = loaded + ' / ' + totalFrames;
+        if (loaded === totalFrames) {
+          ready = true;
+          loader.classList.add('hidden');
+          show(0);
+          initScroll();
+        }
+      };
+      img.src = framePath + 'frame_' + pad(i + 1) + '.jpg';
+      cache[i] = img;
+    }
+
+    function initScroll() {
+      gsap.to({}, {
+        scrollTrigger: {
+          trigger: '#scrollSpacer',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 1.5,
+          onUpdate: self => {
+            const idx = Math.min(Math.floor(self.progress * totalFrames), totalFrames - 1);
+            show(idx);
+          },
+          onEnter: () => show(0),
+          onLeaveBack: () => show(0),
+        }
+      });
+      ScrollTrigger.refresh();
+    }
+
+    window.addEventListener('resize', () => ScrollTrigger.refresh());
+  </script>
+</body>
+</html>
